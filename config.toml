@@ -27,8 +27,8 @@ paginate = 5
 
 [languages]
   [languages.en]
-    title = "Hello Friend"
-    subtitle = "A simple theme for Hugo"
+    title = "Arshad Ali"
+    subtitle = "Swift and iOS related blog"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
