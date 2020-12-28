@@ -1,9 +1,4 @@
-[submodule "themes/fuji"]
-	path = themes/fuji
-	url = https://github.com/amzrk2/hugo-theme-fuji.git
-[submodule "themes/researcher"]
-	path = themes/researcher
-	url = https://github.com/ojroques/hugo-researcher.git
+
 [submodule "themes/hello-friend"]
 	path = themes/hello-friend
 	url = https://github.com/panr/hugo-theme-hello-friend.git
