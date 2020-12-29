@@ -4,10 +4,6 @@ date: 2020-07-19T17:18:05+01:00
 draft: false
 ---
 
-# 
-
-# RxSwift Quick Guide
-
 RxSwift :- is a library for making our code asynchronous + re-active in nature. Swift based varibales or model does not have these bahaviuor by default. We need to write extra code to get these bahaviour
 
 
@@ -18,9 +14,9 @@ RxSwift :- is a library for making our code asynchronous + re-active in nature. 
 
 `Operators` :- transform/ process data emitted by Observable
 
-Observer/ subscriber :- received event/ data from Observable
+`Observer/ subscriber` :- received event/ data from Observable
 
-
+`Schedular` :- thread
 
 # How to create Observables?
 
