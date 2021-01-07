@@ -54,3 +54,45 @@ Search youtube
 Do some real project
 ```
 
+
+
+## Example 2
+
+Lets say you want to learn `Core data`
+
+
+
+Search and learn 
+
+What is Core data?
+
+How to create model?
+
+How to do read, write, create, delete and fetch, predicate, sort, fetch controller,
+
+tablevie and core data
+
+networking and core data
+
+Batch read, write, fetch etc
+
+How to create core data statck?
+
+
+
+> You only need to keep in mind these questions. If you need Just search and use.
+>
+> Its useless to mentally remember how to create core data stack?
+>
+> 
+
+ 
+
+**Real Developers say** 
+
+​	 **Why remember when you can search?**
+
+
+
+Real Developer focus on Problem Solving using his logics, codes and apps.
+
