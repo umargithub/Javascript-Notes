@@ -8,6 +8,12 @@ draft: false
 
 There are many ways to learn. My strategies are
 
+> Minimalistic Reading, Quick,Youtube, Blog, Get your hand Dirty
+>
+> Just remember key concepts and keywords so that you know when to use what and 
+>
+> To know how to use use internet
+
 1. First focus on root/ fundamenta of the Topic/Subject. 
 
     1. Draw Broader Concept map 
