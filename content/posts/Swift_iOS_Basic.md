@@ -135,7 +135,7 @@ When applicationDidFinishLaunching(_:) returns, the local constant goes out of s
 
 **Figure 4.1 Chain of references in view hierarchy**
 
-![Chain of references in view hierarchy](../../themes/hello-friend/images/TreeNodeReferenceCycle.png)
+![Chain of references in view hierarchy](../../themes/hello-friend/images/ARCDiagram1-0044914.png)
 
 Let’s walk through the references in this diagram. You already know that the MainWindowController’s reference count is 1 after the application has finished launching. The MainWindowController has a window property that has been set to an instance of NSWindow. This gives the window a reference count of 1 as well. The window has a contentView property set to an NSView, which also has a reference count of 1. 
 
@@ -253,7 +253,7 @@ Why can’t ARC fix this problem? ARC is not garbage collection. Since ARC is pa
 
 **Figure 4.2 A strong reference cycle**
 
-![A strong reference cycle](../../themes/hello-friend/images/TreeNodeWeakReference.png)
+![A strong reference cycle](../../images/TreeNodeReferenceCycle.png)
 
 Here is the code for Node, which causes the leak:
 
@@ -283,7 +283,7 @@ class Node {
 
 **Figure 4.3 Weak parent reference avoids the cycle**
 
-![Weak parent reference avoids the cycle](../../../../../Desktop/typora_images/TreeNodeWeakReference.png)
+![Weak parent reference avoids the cycle](../../themes/hello-friend/images/TreeNodeWeakReference-0044969.png)
 
 When tree is set to nil, the root node’s reference count is decremented to 0, which deallocates the root node. Because the children array is a value type on the node, its strong references to the children are released, which causes the child’s reference count to reach 0, deallocating it. The entire tree of objects has been freed.
 
@@ -405,9 +405,7 @@ This powerful feature has important implications for memory management. When an 
 
 **Figure 15.3 Captured references in closures can create strong reference cycles**
 
-![Captured references in closures can create strong reference cycles](../../../../../Desktop/typora_images/Closures.StrongRefCycle.Diagram-20210108000348794.png)
-
-
+![Captured references in closures can create strong reference cycles](../../images/Closures.StrongRefCycle.Diagram-20210108001612406.png)
 
 The solution to resolving a strong reference cycle from a closure is to use a capture list:
 
@@ -427,7 +425,7 @@ On the other hand, if the reference may be deallocated before the closure, use `
 
 **Figure 15.4 Strong reference cycle resolved using the capture list**
 
-![Strong reference cycle resolved using the capture list](../../../../../Desktop/typora_images/Closures.NoRefCycle.Diagram-20210108000348796.png)
+![image-20210108001646971](../../images/image-20210108001646971.png)
 
 
 
