@@ -1,311 +1,296 @@
-# Hugo Book Theme
+# Hello Friend
 
-[![Hugo](https://img.shields.io/badge/hugo-0.68-blue.svg)](https://gohugo.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
+![Hello Friend](https://github.com/panr/hugo-theme-hello-friend/blob/master/images/screenshot.png?raw=true)
 
-### [Hugo](https://gohugo.io) documentation theme as simple as plain book
+### DEMO - https://hugo-hello-friend.now.sh/ <a id="demo" />
 
-![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
+<a href="https://www.buymeacoffee.com/panr" target="_blank"><img src="https://res.cloudinary.com/panr/image/upload/v1579374705/buymeacoffee_y6yvov.svg" alt="Buy Me A Coffee" ></a>
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Menu](#menu)
-- [Blog](#blog)
-- [Configuration](#configuration)
-- [Shortcodes](#shortcodes)
-- [Versioning](#versioning)
-- [Contributing](#contributing)
+---
+
+- [Hello Friend](#hello-friend)
+  - [DEMO - https://hugo-hello-friend.now.sh/](#demo)
+  - [Features](#features)
+      - [Built-in shortcodes](#built-in-shortcodes)
+      - [Code highlighting](#code-highlighting)
+      - [Improved RSS Feed](#improved-rss-feed)
+  - [How to start](#how-to-start)
+  - [How to run your site](#how-to-run-your-site)
+  - [How to configure](#how-to-configure)
+  - [How to add a cover image to your posts](#how-to-add-a-cover-image-to-your-posts)
+  - [How to display the Last Modified Date in your posts](#how-to-display-the-last-modified-date-in-your-posts)
+  - [How to hide "Read more" button](#how-to-hide-read-more-button)
+  - [Add-ons](#add-ons)
+  - [How to (safely) edit the theme](#how-to-edit)
+  - [Found a bug?](#bug)
+  - [New cool idea or feature](#feature)
+  - [`Hello Friend` theme user?](#hello-friend-theme-user)
+  - [Sponsoring](#sponsoring)
+  - [License](#license)
 
 ## Features
 
-- Clean simple design
-- Light and Mobile-Friendly
-- Multi-language support
-- Customisable
-- Zero initial configuration
-- Handy shortcodes
-- Comments support
-- Simple blog and taxonomy
-- Primary features work without JavaScript
-- Dark Mode
+- **dark/light mode**, depending on your preferences (dark is default, but you can change it)
+- great reading experience thanks to [**Inter font**](https://rsms.me/inter/), made by [Rasmus Andersson](https://rsms.me/about/)
+- nice code highlighting thanks to [**PrismJS**](https://prismjs.com)
+- fully responsive
 
-## Requirements
+#### Built-in shortcodes
 
-- Hugo 0.68 or higher
-- Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
+- **`image`** (prop required: **`src`**; props optional: **`alt`**, **`position`** (**left** is default | center | right), **`style`**)
+  - eg: `{{< image src="/img/hello.png" alt="Hello Friend" position="center" style="border-radius: 8px;" >}}`
+- **`figure`** (same as `image`, plus few optional props: **`caption`**, **`captionPosition`** (left | **center** is default | right), **`captionStyle`**
+  - eg: `{{< figure src="/img/hello.png" alt="Hello Friend" position="center" style="border-radius: 8px;" caption="Hello Friend!" captionPosition="right" captionStyle="color: red;" >}}`
+- **`imgproc`** Hugo shortcode for image processing, plus additional **`position`** param [ left | center | right ] (optional).
+  - eg: `{{< imgproc "img/hello.png" Resize "250x" center />}}`
+  - More detailed info on processing commands at [https://gohugo.io/content-management/image-processing/](https://gohugo.io/content-management/image-processing/)
+- **`code`** (prop required: **`language`**; props optional: **`title`**, **`id`**, **`expand`** (default "△"), **`collapse`** (default "▽"), **`isCollapsed`**)
+  - eg:
+  ```go
+  {{< code language="css" title="Really cool snippet" id="1" expand="Show" collapse="Hide" isCollapsed="true" >}}
+  pre {
+    background: #1a1a1d;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    overflow: auto;
 
-## Installation
+    @media (--phone) {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
 
-Navigate to your hugo project root and run:
+    code {
+      background: none !important;
+      color: #ccc;
+      padding: 0;
+      font-size: inherit;
+    }
+  }
+  {{< /code >}}
+  ```
 
+#### Code highlighting
+
+By default the theme is using PrismJS to color your code syntax. All you need to do is to wrap you code like this:
+
+<pre>
+```html
+  // your code here
 ```
-git submodule add https://github.com/alex-shpak/hugo-book themes/book
-```
+</pre>
 
-Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
+**Supported languages**: bash/shell, css, clike, javascript, apacheconf, actionscript, applescript, c, csharp, cpp, coffeescript, ruby, csp, css-extras, diff, django, docker, elixir, elm, markup-templating, erlang, fsharp, flow, git, go, graphql, less, handlebars, haskell, http, java, json, kotlin, latex, markdown, makefile, objectivec, ocaml, perl, php, php-extras, r, sql, processing, scss, python, jsx, typescript, toml, reason, textile, rust, sass, stylus, scheme, pug, swift, yaml, haml, twig, tsx, vim, visual-basic, wasm.
 
-```
-hugo server --minify --theme book
-```
+#### Improved RSS Feed
 
-### Creating site from scratch
+Some enhancements have been made to Hugo's [internal RSS](https://github.com/gohugoio/hugo/blob/25a6b33693992e8c6d9c35bc1e781ce3e2bca4be/tpl/tplimpl/embedded/templates/_default/rss.xml) generation code.
 
-Below is an example on how to create a new site from scratch:
+**A page's cover image now appears at the top of its feed display**. This image is set manually using [the cover params](#how-to-add-a-cover-image-to-your-posts). If unset, the RSS generator searches for the first image file in the page bundle whose name includes 'featured', 'cover', or 'thumbnail'.
 
-```sh
-hugo new site mydocs; cd mydocs
-git init
-git submodule add https://github.com/alex-shpak/hugo-book themes/book
-cp -R themes/book/exampleSite/content .
-```
+**You can optionally display the full page content in your RSS feed** (default is Description or Summary data from Front Matter). Set `rssFullText = true` in your `config.toml` file to enable this option.
 
-```sh
-hugo server --minify --theme book
-```
+**You can choose a site image to be displayed when searching for your RSS feed.** Set `rssImage = "image/url/here"` in your `config.toml` file to enable this option.
 
-## Menu
+## How to start
 
-### File tree menu (default)
+You can download the theme manually by going to [https://github.com/panr/hugo-theme-hello-friend.git](https://github.com/panr/hugo-theme-hello-friend.git) and pasting it to `themes/hello-friend` in your root directory.
 
-By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
-You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
+You can also clone it directly to your Hugo folder:
 
-### Leaf bundle menu
-
-You can also use leaf bundle and the content of its `index.md` file as menu.  
-Given you have the following file structure:
-
-```
-├── content
-│   ├── docs
-│   │   ├── page-one.md
-│   │   └── page-two.md
-│   └── posts
-│       ├── post-one.md
-│       └── post-two.md
-```
-
-Create a file `content/menu/index.md` with the content:
-
-```md
-+++
-headless = true
-+++
-
-- [Book Example]({{< relref "/docs/" >}})
-  - [Page One]({{< relref "/docs/page-one" >}})
-  - [Page Two]({{< relref "/docs/page-two" >}})
-- [Blog]({{< relref "/posts" >}})
+```bash
+$ git clone https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend
 ```
 
-And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
+If you don't want to make any radical changes, it's the best option, because you can get new updates when they are available. To do so, include it as a git submodule:
 
-- [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
-- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml)
-- [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
+```bash
+$ git submodule add https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend
+```
 
-## Blog
+⚠️ **The theme needs at least Hugo version 0.74.x**.
 
-A simple blog is supported in the section `posts`.  
-A blog is not the primary usecase of this theme, so it has only minimal features.
+## How to run your site
 
-## Configuration
+From your Hugo root directory run:
 
-### Site Configuration
+```
+$ hugo server -t hello-friend
+```
 
-There are a few configuration options that you can add to your `config.toml` file.  
-You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
+and go to `localhost:1313` in your browser. From now on all the changes you make will go live, so you don't need to refresh your browser every single time.
+
+## How to configure
+
+The theme doesn't require any advanced configuration. Just copy:
 
 ```toml
-# (Optional) Set Google Analytics if you use it to track your website.
-# Always put it on the top of the configuration file, otherwise it won't work
-googleAnalytics = "UA-XXXXXXXXX-X"
-
-# (Optional) If you provide a Disqus shortname, comments will be enabled on
-# all pages.
-disqusShortname = "my-site"
-
-# (Optional) Set this to true if you use capital letters in file names
-disablePathToLower = true
-
-# (Optional) Set this to true to enable 'Last Modified by' date and git author
-#  information on 'doc' type pages.
-enableGitInfo = true
-
-# (Optional) Theme is intended for documentation use, therefore it doesn't render taxonomy.
-# You can remove related files with config below
-disableKinds = ['taxonomy', 'taxonomyTerm']
+baseurl = "/"
+languageCode = "en-us"
+theme = "hello-friend"
+paginate = 5
 
 [params]
-  # (Optional, default light) Sets color theme: light, dark or auto.
-  # Theme 'auto' switches between dark and light modes based on browser/os preferences
-  BookTheme = 'light'
+  # dir name of your blog content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
 
-  # (Optional, default true) Controls table of contents visibility on right side of pages.
-  # Start and end levels can be controlled with markup.tableOfContents setting.
-  # You can also specify this parameter per page in front matter.
-  BookToC = true
+  # "light" or "dark"
+  defaultTheme = "dark"
 
-  # (Optional, default none) Set the path to a logo for the book. If the logo is
-  # /static/logo.png then the path would be 'logo.png'
-  BookLogo = 'logo.png'
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 2
 
-  # (Optional, default none) Set leaf bundle to render as side menu
-  # When not specified file structure and weights will be used
-  BookMenuBundle = '/menu'
+  # Show reading time in minutes for posts
+  showReadingTime = false
 
-  # (Optional, default docs) Specify section of content to render as menu
-  # You can also set value to "*" to render all sections to menu
-  BookSection = 'docs'
+  # Show table of contents at the top of your posts (defaults to false)
+  # Alternatively, add this param to post front matter for specific posts
+  # toc = true
 
-  # Set source repository location.
-  # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/alex-shpak/hugo-book'
+  # Show full page content in RSS feed items
+  #(default is Description or Summary metadata in the front matter)
+  # rssFullText = true
 
-  # Enable 'Edit this page' links for 'doc' page type.
-  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-  # Path must point to the site directory.
-  BookEditPath = 'edit/master/exampleSite'
+[languages]
+  [languages.en]
+    title = "Hello Friend"
+    subtitle = "A simple theme for Hugo"
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    writtenBy = "Written by"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    minuteReadingTime = "min read"
+    dateFormatSingle = "2006-01-02"
+    dateFormatList = "2006-01-02"
+    # leave empty to disable, enter display text to enable
+    # lastModDisplay = ""
 
-  # (Optional, default January 2, 2006) Configure the date format used on the pages
-  # - In git information
-  # - In blog posts
-  BookDateFormat = 'Jan 2, 2006'
+    [languages.en.params.logo]
+      logoText = "hello friend"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
 
-  # (Optional, default true) Enables search function with flexsearch,
-  # Index is built on fly, therefore it might slowdown your website.
-  # Configuration for indexing can be adjusted in i18n folder per language.
-  BookSearch = true
-
-  # (Optional, default true) Enables comments template on pages
-  # By default partials/docs/comments.html includes Disqus template
-  # See https://gohugo.io/content-management/comments/#configure-disqus
-  # Can be overwritten by same param in page frontmatter
-  BookComments = true
-
-  # /!\ This is an experimental feature, might be removed or changed at any time
-  # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
-  # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
-  # Theme will print warning if page referenced in markdown does not exists.
-  BookPortableLinks = true
-
-  # /!\ This is an experimental feature, might be removed or changed at any time
-  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
-  BookServiceWorker = true
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+      [[languages.en.menu.main]]
+        identifier = "showcase"
+        name = "Showcase"
+        url = "/showcase"
 ```
 
-### Multi-Language Support
+to `config.toml` file in your Hugo root directory and change params fields. In case you need, here's [a YAML version](https://gist.github.com/panr/8f9b363e358aaa33f6d353c77feee959).
 
-Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
+**NOTE:** Please keep in mind that currently main menu doesn't support nesting.
 
-### Page Configuration
+## How to add a cover image to your posts
 
-You can specify additional params in the front matter of individual pages:
+Adding a cover image to your post is simple and there are two options when you edit your `index.md` file in `content/posts/blog-entry-xy/index.md`:
 
-```toml
-# Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
-type = 'docs'
+* Use `cover = "/path/to/absolute/img.jpg"` to link an absolute image
+  * Resulting in `https://www.yourpage.com/path/to/absolute/img.jpg`
+* Use `cover = "img.jpg"` and `useRelativeCover = true` to link the image relative to the blog post folder
+  * Resulting in `https://www.yourpage.com/posts/blog-entry-xy/img.jpg`
+* Use `coverAlt = "description of image"` to add custom alt text to the cover image (defaults to post or page title as alt text)
+* Use `coverCaption = "Image Credit to [Barry Bluejeans](https://unsplash.com/)"` to add a caption for the cover image.
 
-# Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
-weight = 10
+## How to display the Last Modified Date in your posts
 
-# (Optional) Set to 'true' to mark page as flat section in file-tree menu (if BookMenuBundle not set)
-bookFlatSection = false
+Add `lastModDisplay = "[your display text]"` to `config.toml` to enable last modified date on your posts. Note - an empty string value `""` does not display anything.
 
-# (Optional) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
-bookCollapseSection = true
+Example: `lastModDisplay = "Modified:"` --> "Modified: Jan 01, 0001"
 
-# (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
-bookHidden = false
+:octocat: Hugo's `enableGitInfo` option is a nice complement to this feature.
 
-# (Optional) Set 'false' to hide ToC from page
-bookToC = true
+## How to hide "Read more" button
 
-# (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
-bookComments = true
+In a post's front matter you have to add `hideReadMore` param set to `true`. This will result in that the post won't have "Read more" button in the list view.
 
-# (Optional) Set to 'false' to exclude page from search index.
-bookSearchExclude = true
+## Add-ons
+
+- **Archive** — Theme has built-in `archive` page for main content (see `contentTypeName` variable in config). If you need archive on your blog just copy https://github.com/panr/hugo-theme-hello-friend/blob/master/exampleSite/content/archive.md to your `content` dir. If you need multilangual archives, duplicate `content/archive.md` and add `.Lang` variable, eg: `content/archive.pl.md` (remember to change `url` in duplicated file).
+- **Comments** — for adding comments to your blog posts please take a look at `layouts/partials/comments.html` https://github.com/panr/hugo-theme-terminal/blob/master/layouts/partials/comments.html.
+- **Prepended `<head>`** — if you need to add something inside `<head>` element, and before any of the theme's `<script>` and `<link>` tags are declared, please take a look at `layouts/partial/prepended_head.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/prepended_head.html
+- **Extended `<head>`** — if you need to add something inside `<head>` element, after all of all of the theme's `<script>` and `<link>` tags are declared, please take a look at `layouts/partial/extended_head.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/extended_head.html
+- **Extended `<footer>`** — if you need to add something before end of `<body>` element, please take a look at `layouts/partial/extended_footer.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/extended_footer.html
+
+## How to (safely) edit the theme <a id="how-to-edit" />
+
+If you have to override only some of the styles, you can do this easily by adding `static/style.css` in your root directory and point things you want to change.
+
+To change something directly in the theme, you have to go to `themes/hello-friend` and modify the files.
+
+First, you need to install Node dependencies. To do so, go to the theme directory (from your Hugo root directory):
+
+```bash
+ $ cd themes/hello-friend
 ```
 
-### Partials
+ then run:
 
-There are few empty partials you can override in `layouts/partials/`
+ ```bash
+ $ npm install
+ $ npm i yarn
+ $ yarn
+ ```
 
-| Partial                                            | Placement                              |
-| -------------------------------------------------- | -------------------------------------- |
-| `layouts/partials/docs/inject/head.html`           | Before closing `<head>` tag            |
-| `layouts/partials/docs/inject/body.html`           | Before closing `<body>` tag            |
-| `layouts/partials/docs/inject/footer.html`         | After page footer content              |
-| `layouts/partials/docs/inject/menu-before.html`    | At the beginning of `<nav>` menu block |
-| `layouts/partials/docs/inject/menu-after.html`     | At the end of `<nav>` menu block       |
-| `layouts/partials/docs/inject/content-before.html` | Before page content                    |
-| `layouts/partials/docs/inject/content-after.html`  | After page content                     |
+After you modified the files you can run webpack in watch mode:
 
-### Extra Customisation
-
-| File                     | Description                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------- |
-| `static/favicon.png`     | Override default favicon                                                              |
-| `assets/_custom.scss`    | Customise or override scss styles                                                     |
-| `assets/_variables.scss` | Override default SCSS variables                                                       |
-| `assets/_fonts.scss`     | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
-
-### Plugins
-
-There are a few features implemented as plugable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
-
-| Plugin                            | Description                                                 |
-| --------------------------------- | ----------------------------------------------------------- |
-| `assets/plugins/_numbered.scss`   | Makes headings in markdown numbered, e.g. `1.1`, `1.2`      |
-| `assets/plugins/_scrollbars.scss` | Overrides scrollbar styles to look similar across platforms |
-
-To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root.
-
-### Hugo Internal Templates
-
-There are a few hugo templates inserted in `<head>`
-
-- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
-- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
-
-## Shortcodes
-
-- [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
-- [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
-- [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
-- [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
-- [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
-- [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
-- [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
-
-By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
-
-```toml
-[markup.goldmark.renderer]
-  unsafe = true
+```bash
+$ yarn dev
 ```
 
-If you are using `config.yaml` or `config.json`, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
+or rebuild theme
 
-## Versioning
+```bash
+$ yarn build
+```
 
-This theme follows a simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
+To see the changes (remember to restart `hugo server`).
 
-If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
+## Found a bug? <a id="bug" />
 
-## Contributing
+If you spot any bugs, please use [Issue Tracker](https://github.com/panr/hugo-theme-hello-friend/issues) or create a new [Pull Request](https://github.com/panr/hugo-theme-hello-friend/pulls) to fix the issue.
 
-### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
+## New cool idea or feature? <a id="feature" />
 
-Contributions are welcome and I will review and consider pull requests.  
-Primary goals are:
+The theme is in constant development since 2019 and has got many cool features that helped many of you and made the theme better. But there were also many features that I wasn't sure about because I want to keep the theme as simple as possible.
 
-- Keep it simple.
-- Keep minimal (or zero) default configuration.
-- Avoid interference with user-defined layouts.
-- Avoid using JS if it can be solved by CSS.
+So, let's say you have an idea of how to extend the theme. That's cool and you're welcome to do that, just follow these steps:
 
-Feel free to open issues if you find missing configuration or customisation options.
+- fork the theme
+- implement the feature
+- write an instruction how to use the feature
+- give a working example of the implementation for other users
+- add info about your work to `COMMUNITY-FEATURES.md`
+- make a PR with edited `COMMUNITY-FEATURES.md`
+
+This will help keeping the theme close to its roots, and also allow anyone who wishes to improve it and match their needs, to do whatever they want.
+
+Sounds OK? Cool, let's rock! 🤘
+
+## `Hello Friend` theme user?
+
+I'd be happy to know more about you and what you are doing. If you want to share it, please make a contribution and [add your site to the list](https://github.com/panr/hugo-theme-hello-friend/blob/master/USERS.md)! 🤗
+
+## Sponsoring
+
+If you like my work and want to support the development of the project, now you can! Just:
+
+<a href="https://www.buymeacoffee.com/panr" target="_blank"><img src="https://res.cloudinary.com/panr/image/upload/v1579374705/buymeacoffee_y6yvov.svg" alt="Buy Me A Coffee" ></a>
+
+## License
+
+Copyright © 2019-2020 Radosław Kozieł ([@panr](https://twitter.com/panr))
+
+The theme is released under the MIT License. Check the [original theme license](https://github.com/panr/hugo-theme-hello-friend/blob/master/LICENSE.md) for additional licensing information.
