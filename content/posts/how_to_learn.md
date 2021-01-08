@@ -18,6 +18,7 @@ There are many ways to learn. My strategies are
 
     1. Draw Broader Concept map.
     2. Write down some basic questions you want to answer.
+    3. Teach to someone, Use pen and pencil. 
 
     > You must do this without spending 10-20 minutes
 
@@ -95,4 +96,14 @@ How to create core data statck?
 
 
 Real Developer focus on Problem Solving using his logics, codes and apps.
+
+
+
+Read and watch official documentation, blogs like objc.io, swiftbysundell,pointfree, raywenderlich
+
+Watch conference videos. 
+
+Clone and read  and contribute code to opensource Apps
+
+
 
