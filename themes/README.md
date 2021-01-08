@@ -1,368 +1,311 @@
-# Color Your World
+# Hugo Book Theme
 
-[Live demo (on Netlify)](https://color-your-world-demo.netlify.app/) | [Demo (on Hugo Themes)](https://themes.gohugo.io/theme/hugo-theme-color-your-world/)
+[![Hugo](https://img.shields.io/badge/hugo-0.68-blue.svg)](https://gohugo.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
 
-**Color Your World** is a [Hugo](https://gohugo.io) theme developed around a single experiment that led me to this:
+### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-![HTML color picker with 12 presets.](https://gitlab.com/rmaguiar/hugo-theme-color-your-world/-/raw/master/images/color-picker.png)
+![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
 
-It's a HTML color picker. Along with some vanilla JS, it allows anyone to change what I'll be calling here... the **accent color**, a color used mostly in interactive elements.
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Menu](#menu)
+- [Blog](#blog)
+- [Configuration](#configuration)
+- [Shortcodes](#shortcodes)
+- [Versioning](#versioning)
+- [Contributing](#contributing)
 
-I liked the result so much that I decided to use it on my main site, but I also want to share it, in case anyone wants to tinker with it.
+## Features
 
-It makes heavy use of [Hugo Pipes](https://gohugo.io/hugo-pipes) and I highly recommend using `--minify` when building!
-
-I've been working on this theme for so long that there are features I don't even remember anymore... But here are *some*:
-
-* Customizable light/dark mode;
-* Customizable "accent color" (in an user-level);
-* Keyboard-friendly;
-* Privacy-aware to an extent (no Google Analytics/Fonts, Disqus, etc);
-* Social shortcode including centralized and decentralized platforms;
-* Contact form shortcode (via [Formspree](https://formspree.io));
-* Open Graph, Twitter Cards and Structured Data (schema.org) meta tags;
-* Responsive images via image processing;
-* Basic search functionality via [Fuse.js](https://github.com/krisk/Fuse);
-* Image lazy loading (native + [lazysizes](https://github.com/aFarkas/lazysizes));
-* **noscript** capable to an extent (except for KaTeX and search functionality).
-
-
-## Screenshots
-
-![Theme screenshot in dark mode.](https://gitlab.com/rmaguiar/hugo-theme-color-your-world/-/raw/master/images/screenshot.png)
-
-![Theme screenshot in light mode.](https://gitlab.com/rmaguiar/hugo-theme-color-your-world/-/raw/master/images/screenshot2.png)
+- Clean simple design
+- Light and Mobile-Friendly
+- Multi-language support
+- Customisable
+- Zero initial configuration
+- Handy shortcodes
+- Comments support
+- Simple blog and taxonomy
+- Primary features work without JavaScript
+- Dark Mode
 
 ## Requirements
 
-* Hugo Extended
-* Minimum version: 0.73.0
+- Hugo 0.68 or higher
+- Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
 
 ## Installation
 
-If you have git installed, you can do the following at the CLI within the Hugo directory:
+Navigate to your hugo project root and run:
 
-```bash
-git clone https://gitlab.com/rmaguiar/hugo-theme-color-your-world.git themes/color-your-world
+```
+git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
 
-For more information read the [Hugo official setup guide](https://gohugo.io/overview/installing/).
+Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
 
-## Customization
-
-### Light/dark mode colors
-
-Both color palettes can be found in `assets/scss/colors/variables.scss`.
-
-### Accent color
-
-By default, there are 2 accent colors plus 10 on the `exampleSite`, distributed into pairs.
-
-You can change the default mode and accent colors in the config:
-
-```toml
-[params.style]
-
-  # Dark mode as default
-  # User preferences (site/system settings) will still have priority over it
-  # The default is false
-  isDark = true
-
-  # Accent colors for light and dark mode respectively
-  lightAccent  = "#225670" # Default is "#225670"
-  darkAccent   = "#dd587c" # Default is "#dd587c"
-
-  # More colors, pick as many as you want (not really sure if there's a limit)
-  # Apparently these may not show up on every modern browser (ie.: Firefox)
-  # There's no default value. Used here just as example
-  presets = [ "#1f676b", "#f3a530", "#902b37", "#1dbc91", "#754e85", "#7fc121", "#a8314a", "#ff7433", "#3e6728", "#c063bd" ]
+```
+hugo server --minify --theme book
 ```
 
-### Syntax highlighting
+### Creating site from scratch
 
-This theme comes with two chroma styles, meant to be used with light and dark mode respectively. These are **Solarized Dark** for light mode and **Monokai** for dark mode.
+Below is an example on how to create a new site from scratch:
 
-![Syntax highlighting in both dark and light modes.](https://gitlab.com/rmaguiar/hugo-theme-color-your-world/-/raw/master/images/syntax-highlight.gif)
-
-It's worth noting that I'm not using the original stylesheets, but modified stylesheets based on the [pygments-high-contrast-stylesheets](https://github.com/mpchadwick/pygments-high-contrast-stylesheets) (aka "WCAG AA passing Pygments stylesheets").
-
-In case you want to change it, it can be found in `assets/scss/colors/chroma` as `light.scss` and `dark.scss`.
-
-The lines below are **required** in your config file to make use of this feature:
-
-```toml
-[markup]
-  [markup.highlight]
-    noClasses = false
+```sh
+hugo new site mydocs; cd mydocs
+git init
+git submodule add https://github.com/alex-shpak/hugo-book themes/book
+cp -R themes/book/exampleSite/content .
 ```
 
-To disable it, you can just remove the `noClasses = false` (as its default value is `true`) and add the lines below:
+```sh
+hugo server --minify --theme book
+```
+
+## Menu
+
+### File tree menu (default)
+
+By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
+You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
+
+### Leaf bundle menu
+
+You can also use leaf bundle and the content of its `index.md` file as menu.  
+Given you have the following file structure:
+
+```
+├── content
+│   ├── docs
+│   │   ├── page-one.md
+│   │   └── page-two.md
+│   └── posts
+│       ├── post-one.md
+│       └── post-two.md
+```
+
+Create a file `content/menu/index.md` with the content:
+
+```md
++++
+headless = true
++++
+
+- [Book Example]({{< relref "/docs/" >}})
+  - [Page One]({{< relref "/docs/page-one" >}})
+  - [Page Two]({{< relref "/docs/page-two" >}})
+- [Blog]({{< relref "/posts" >}})
+```
+
+And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
+
+- [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
+- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml)
+- [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
+
+## Blog
+
+A simple blog is supported in the section `posts`.  
+A blog is not the primary usecase of this theme, so it has only minimal features.
+
+## Configuration
+
+### Site Configuration
+
+There are a few configuration options that you can add to your `config.toml` file.  
+You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
+# (Optional) Set Google Analytics if you use it to track your website.
+# Always put it on the top of the configuration file, otherwise it won't work
+googleAnalytics = "UA-XXXXXXXXX-X"
+
+# (Optional) If you provide a Disqus shortname, comments will be enabled on
+# all pages.
+disqusShortname = "my-site"
+
+# (Optional) Set this to true if you use capital letters in file names
+disablePathToLower = true
+
+# (Optional) Set this to true to enable 'Last Modified by' date and git author
+#  information on 'doc' type pages.
+enableGitInfo = true
+
+# (Optional) Theme is intended for documentation use, therefore it doesn't render taxonomy.
+# You can remove related files with config below
+disableKinds = ['taxonomy', 'taxonomyTerm']
+
 [params]
-  [params.style]
-    useCustomChroma = false
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'light'
+
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = true
+
+  # (Optional, default none) Set the path to a logo for the book. If the logo is
+  # /static/logo.png then the path would be 'logo.png'
+  BookLogo = 'logo.png'
+
+  # (Optional, default none) Set leaf bundle to render as side menu
+  # When not specified file structure and weights will be used
+  BookMenuBundle = '/menu'
+
+  # (Optional, default docs) Specify section of content to render as menu
+  # You can also set value to "*" to render all sections to menu
+  BookSection = 'docs'
+
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo = 'https://github.com/alex-shpak/hugo-book'
+
+  # Enable 'Edit this page' links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Path must point to the site directory.
+  BookEditPath = 'edit/master/exampleSite'
+
+  # (Optional, default January 2, 2006) Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  BookDateFormat = 'Jan 2, 2006'
+
+  # (Optional, default true) Enables search function with flexsearch,
+  # Index is built on fly, therefore it might slowdown your website.
+  # Configuration for indexing can be adjusted in i18n folder per language.
+  BookSearch = true
+
+  # (Optional, default true) Enables comments template on pages
+  # By default partials/docs/comments.html includes Disqus template
+  # See https://gohugo.io/content-management/comments/#configure-disqus
+  # Can be overwritten by same param in page frontmatter
+  BookComments = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
+  # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
+  # Theme will print warning if page referenced in markdown does not exists.
+  BookPortableLinks = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
+  BookServiceWorker = true
 ```
 
-## Image processing
+### Multi-Language Support
 
-By default, images with width equal or greater than 1280 pixels are processed (resized) into 3 resolutions: 1280x, 960x and 640x (this one with quality at 90, as opposed to the default 75).
+Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
 
-You can change this behavior via config:
+### Page Configuration
+
+You can specify additional params in the front matter of individual pages:
 
 ```toml
-[params.imageProc]
-  highRes   = [ "1280x", "1280w" ]
-  mediumRes = [ "960x", "960w" ]
-  lowRes    = [ "640x q90", "640w" ]
-  # entry = [ resize options, condition ]
-  
-  # Images with width equal or greater this value
-  # will be processed into the 3 resolutions above
-  # Valid only for images rendered via markdown
-  # The default value is 1280
-  markupAutoResizeWidth = 1280
+# Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
+type = 'docs'
+
+# Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
+weight = 10
+
+# (Optional) Set to 'true' to mark page as flat section in file-tree menu (if BookMenuBundle not set)
+bookFlatSection = false
+
+# (Optional) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
+bookCollapseSection = true
+
+# (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
+bookHidden = false
+
+# (Optional) Set 'false' to hide ToC from page
+bookToC = true
+
+# (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
+bookComments = true
+
+# (Optional) Set to 'false' to exclude page from search index.
+bookSearchExclude = true
 ```
 
-The shortcodes `img` and `figure` will **always** process images and cover images will *also* process resolutions for Open Graph (1200x630) and Twitter (1280x640).
+### Partials
+
+There are few empty partials you can override in `layouts/partials/`
+
+| Partial                                            | Placement                              |
+| -------------------------------------------------- | -------------------------------------- |
+| `layouts/partials/docs/inject/head.html`           | Before closing `<head>` tag            |
+| `layouts/partials/docs/inject/body.html`           | Before closing `<body>` tag            |
+| `layouts/partials/docs/inject/footer.html`         | After page footer content              |
+| `layouts/partials/docs/inject/menu-before.html`    | At the beginning of `<nav>` menu block |
+| `layouts/partials/docs/inject/menu-after.html`     | At the end of `<nav>` menu block       |
+| `layouts/partials/docs/inject/content-before.html` | Before page content                    |
+| `layouts/partials/docs/inject/content-after.html`  | After page content                     |
+
+### Extra Customisation
+
+| File                     | Description                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| `static/favicon.png`     | Override default favicon                                                              |
+| `assets/_custom.scss`    | Customise or override scss styles                                                     |
+| `assets/_variables.scss` | Override default SCSS variables                                                       |
+| `assets/_fonts.scss`     | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
+
+### Plugins
+
+There are a few features implemented as plugable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
+
+| Plugin                            | Description                                                 |
+| --------------------------------- | ----------------------------------------------------------- |
+| `assets/plugins/_numbered.scss`   | Makes headings in markdown numbered, e.g. `1.1`, `1.2`      |
+| `assets/plugins/_scrollbars.scss` | Overrides scrollbar styles to look similar across platforms |
+
+To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root.
+
+### Hugo Internal Templates
+
+There are a few hugo templates inserted in `<head>`
+
+- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
+- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
 
 ## Shortcodes
 
-The most complex shortcodes here are the `social` and `contact-form`. They can be used to inject a list of social platform links and a contact form, respectively.
+- [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
+- [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
+- [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
+- [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
+- [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
+- [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
+- [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
 
-### Social
-
-Here I make a distinction between centralized and decentralized platforms.
-
-Since decentralized platforms introduced the concept of "instances". It's not uncommon that a single person owns multiple accounts, in multiple instances, in the same platform.
-
-This distinction should make the setup easier.
-
-Here's an example of config file:
+By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 
 ```toml
-[params.social.centralized]
-  facebook      = [ "<username>", "Zuckerburg" ]
-  flickr        = [ "<username>" ]
-  github        = [ "<username>" ]
-  gitlab        = [ "<username>" ]
-  instagram     = [ "<username>" ]
-  keybase       = [ "<username>" ]
-  linkedin      = [ "<username>" ]
-  medium        = [ "<username>" ]
-  reddit        = [ "<username>" ]
-  snapchat      = [ "<username>" ]
-  soundcloud    = [ "<username>" ]
-  stackOverflow = [ "<username>" ]
-  strava        = [ "<username>" ]
-  telegram      = [ "<username>" ]
-  twitch        = [ "<username>" ]
-  twitter       = [ "<username>", "@birb" ]
-  vimeo         = [ "<username>" ]
-  whatsapp      = [ "<number>" ]
-  xing          = [ "<username>" ]
-  youtube       = [ "<channelid>" ]
-  #entry         = [ "username", "label (optional)" ]
-  
-  # The "entry" here IS important. It's used to load the data.
-
-[params.social.decentralized]
-
-  [params.social.decentralized.element]
-    1 = [ "https://app.element.io/#/user/<username>:matrix.org", "matrix.org" ]
-    #entry = [ "full url", "label (required)" ]
-    
-  [params.social.decentralized.funkwhale]
-    1 = [ "https://open.audio/<username>", "open.audio" ]
-    
-  [params.social.decentralized.mastodon]
-    1 = [ "https://mastodon.social/<username>", "mastodon.social" ]
-    2 = [ "https://mastodon.too/<username>", "mastodon.too" ]
-    3 = [ "https://yet.another.one/<username>", "yet.another.one" ]
-    
-  [params.social.decentralized.matrix]
-    1 = [ "https://matrix.to/#/<username>:matrix.org", "matrix.org" ]
-    2 = [ "https://matrix.to/#/<username>:other.org", "other.org" ]
-    
-  [params.social.decentralized.peertube]
-    1 = [ "https://peertube.something/accounts/<username>", "peertube.something" ]
-    
-  [params.social.decentralized.pixelfed]
-    1 = [ "https://pixelfed.social/<username>", "pixelfed.social" ]
-    
-  # The "entry" here ISN'T important. It's used for nothing.
+[markup.goldmark.renderer]
+  unsafe = true
 ```
 
-This information will also be used to generate social meta tags (ie.: rel="me" and Schema.org).
+If you are using `config.yaml` or `config.json`, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
-### Contact form
+## Versioning
 
-```toml
-# Contact form shortcode
-[params.contact]
+This theme follows a simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
 
-  # formspree.io Form ID
-  formspreeFormId = "example"
-  
-  # Autocomplete [on/off] and min character length for message
-  autoComplete      = false # Default is false
-  messageMinLength  = 140   # Default is 140
-  
-  # Subject
-  # You can set a single value below (and it will cease to be a dropdown),
-  # BUT KEEP IT AS AN ARRAY
-  # It can also be disabled entirely (and it will turn into a text field)
-  subject = [ 'Just saying "hi"', "I know what you did last winter", "... Is that a sloth?", "お前はもう死んでいる。" ]
+If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
 
-  # Text placeholders. As usual, comment the lines if you don't want use them
-  # The "subject" below will only be used if the "subject" above doesn't exist (ie.: commented/deleted)
-  [params.contact.placeholder]
-    name    = "Jane Doe"
-    email   = "janedoe@example.com"
-    subject = 'Just saying "hi"'
-    message = "Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
-```
+## Contributing
 
+### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
 
-## Miscellaneous
+Contributions are welcome and I will review and consider pull requests.  
+Primary goals are:
 
-### Rich content
+- Keep it simple.
+- Keep minimal (or zero) default configuration.
+- Avoid interference with user-defined layouts.
+- Avoid using JS if it can be solved by CSS.
 
-Minimal effort was put here, since I don't use this feature. I recommend that you create your own `assets/scss/rich-content.scss`.
-
-### 404
-
-A **really** basic 404 page can be generated via config file by using:
-
-```toml
-[params.notFound]
-  title         = "Page not found"
-  description   = "This page was not found."
-  paragraph     = "Nothing to see here, buddy."
-```
-
-### Custom front matter params
-
-* `mainTitle` (string): Can be used to replace the `<title>` meta tag, if you wish it to be different from the `<h1>` (which will still use the `title` param);
-* `sitemapExclude` (true|false): Can be used to exclude a page/section from the sitemap;
-* `noindex` (true|false): Similar to the above. Can be used to exclude a page/section from being indexed (by bots or your own site). It will change the meta tag `robots` to `noindex` and the page(s) will not be added to the site's search index.
-
-### Custom partials
-
-* The site title can be replaced by creating a file named `layouts/partials/custom/site-title.html`;
-* Custom favicons can be used by creating a file named `layouts/partials/custom/head-append.html`;
-* Custom CSS can be imported into the main CSS file by creating a file named `static/css/custom.css` or `assets/scss/custom.scss`;
-* The `copyright` param can be replaced by creating a file named `layouts/partials/custom/copyright.html`.
-
-### More params
-
-More possible params for your config file (or front matter):
-
-```toml
-[params]
-  
-  # Site description
-  description = "John Doe's personal website"
-  
-  # Author
-  author      = "John Doe"
-  authorDesc  = "Some indescribable horror."
-  
-  # Site cover, for Open Graph, Twitter Cards and Schema.org
-  # It will be used if the current page doesn't have an image cover
-  # File will be picked from the "assets" directory
-  # Comment the lines if you don't want to use it
-  cover     = "img/cover.jpg"
-  coverAlt  = "A placeholder that doesn't deserve to be described."
-  
-  # Shows a message in the footer about JavaScript being disabled
-  # The default is false
-  hasNoscriptNotice = true
-  
-  # Default path for images in posts
-  # ie.: "content/some-post/img"
-  # Can also be set PER PAGE
-  # It can be used to reduce repetition
-  # There's no default value
-  imgPath = "img"
-  
-  # Default classes for markup image 
-  # Modifies the default behavior of images placed via markdown
-  # Can also be set PER PAGE via front matter
-  # Available classes are: border and borderless
-  # There's no default value
-  markupImgClass = "borderless"
-  
-  # This will append a separator (of your choice) along the site title to your <title>
-  # ie.: | ❚ - – — • ⚫
-  # You can disabled it PER PAGE by using "disableTitleSeparator" at front
-  # matter or disable it entirely by commenting the line below
-  titleSeparator = "|"
-  
-  [params.search]
-  
-    # Enable search form (at the post list)
-    # The default value is false
-    enable = true
-  
-    # Limit search results
-    # The default value is 30
-    maxResults = 15
-    
-    # Limit seach field input and pattern matching
-    minLength = 2   # Default is 3
-    maxLength = 42  # Default is 32
-    
-    # Optional placeholder for search field
-    placeholder = "ie.: lorem ipsum"
-    
-    # Stop word filter list
-    # Can also be set PER PAGE via front matter
-    # There's no default value
-    stopWords = [ "a", "an", "and", "in", "the", "to", "was", "were", "with" ]
-
-  [params.style]
-  
-    # Disable the use of system settings (prefers-color-scheme)
-    # Can be used as a workaround for Chrome on Linux
-    # (Issue 998903: Dark Gtk theme does not affect prefers-color-scheme media query)
-    # The default is false
-    ignoreSystemSettings = true
-  
-    # Use an icon or text for footnote return links
-    # The default is false
-    hasIconAsFootnoteReturnLink = true
-    
-    # For the social shortcode
-    # Use flexbox (with flex-grow) or grid (equal width)
-    # The default is false
-    socialIsFlex = true
-    
-    # Keep anchor links hidden until it's focused/hovered
-    # They will always be visible in mobile devices, regardless the option
-    # The default is false
-    hideAnchors = true
-
-    # CSS animation transition when changing colors
-    # The default is ".5s ease"
-    changeTransition = ".3s ease"
-```
-
-## Acknowledgements
-
-* [Font Awesome](https://fontawesome.com/) and [Fork Awesome](https://forkaweso.me/) for the icons;
-* [@nickpunt](https://gist.github.com/nickpunt) and [@regpaq](https://gist.github.com/regpaq) for the [dark/light mode switcher](https://gist.github.com/regpaq/04c67e8aceecbf0fd819945835412d1f) idea;
-* Glenn McComb and [his article](https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/) about custom pagination with Hugo;
-* JeffProd and [his article](https://en.jeffprod.com/blog/2018/build-your-own-hugo-website-search-engine/) about building a custom search engine for Hugo;
-* Many people [on this forked gist](https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae) for their takes on Fuse.js + Hugo;
-* Philip Walton and [his sticky footer solution](https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/) with Flexbox;
-* [lazysizes](https://github.com/aFarkas/lazysizes);
-* [Fuse.js](https://github.com/krisk/Fuse);
-* [KaTeX](https://katex.org/);
-* Hugo and [its community](https://discourse.gohugo.io/).
-
-## Sponsoring
-
-If this repo was useful or helpful to you in any way, please consider buying me a coffee:
-
-<a href="https://www.buymeacoffee.com/rmaguiar" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/lato-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;"></a>
+Feel free to open issues if you find missing configuration or customisation options.
