@@ -27,8 +27,8 @@ paginate = 5
 
 [languages]
   [languages.en]
-    title = "Arshad Ali"
-    subtitle = "Swift and iOS related blog"
+    title = "Mohammad Umar"
+    subtitle = "Javascript Notes"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
@@ -44,7 +44,7 @@ paginate = 5
     # lastModDisplay = ""
 
     [languages.en.params.logo]
-      logoText = "Arshad Ali"
+      logoText = "Mohammad Umar"
       logoHomeLink = "/"
     # or
     #
