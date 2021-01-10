@@ -8,7 +8,7 @@ draft: false
 
 Functions that operate on/with other functions. They can:
 
-- [Accept other functions as arguments](#functions-asargumnts)
+- [Accept other functions as arguments](#functions-as-argumnts)
 - [Returns a function](#returning-functions)
 
 ### Functions as Arguments <span class="heading__cursor"></span>
@@ -73,7 +73,7 @@ pickOne(f1, f2)
 // Pick a Random Function
 ```
 
-### Returning Functions
+### Returning Functions <span class="heading__cursor"></span>
 
 **Example 1**
 
