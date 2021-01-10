@@ -149,6 +149,9 @@ first(function (){
   console.log(2);
 });
 
+// Returns
+// 1
+// 2
 ```
 
 **JavaScript is an event-driven programming language. We also use callback functions for event declarations. For example, let’s say we want users to click on a button:**
