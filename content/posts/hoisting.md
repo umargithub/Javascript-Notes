@@ -37,7 +37,7 @@ animal = "Rabbit"; // Here interpreter wil assign the vaue
 // Returns Uncaught ReferenceError: animal is not defined
 ```
 
-###But why undefined?
+### But why undefined?
 
 When JavaScript engine finds a var variable declaration during the compile phase, it will add that variable to the lexical environment and initialize it with undefined and later during the execution when it reaches the line where the actual assignment is done in the code, it will assign that value to the variable.
 
