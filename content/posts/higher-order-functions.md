@@ -11,6 +11,8 @@ Functions that operate on/with other functions. They can:
 - [Accept other functions as arguments](#functions-as-arguments)
 - [Returns a function](#returning-functions)
 
+> In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called higher-order functions. Any function that is passed as an argument is called a callback function.
+
 ### Functions as Arguments
 
 **Example 1**
