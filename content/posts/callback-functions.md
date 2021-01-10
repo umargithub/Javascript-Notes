@@ -32,6 +32,23 @@ callTwice(laugh) // Laugh is callback function
 **Example 2**
 
 ```javascript
+function callTwice(func) {
+	func();
+	func();
+}
+
+callTwice(function () {
+	console.log("Ha ha ha");
+}) // Calling anonymous
+
+// Result
+// Ha ha ha 
+// Ha ha ha
+```
+
+**Example 3**
+
+```javascript
 function sayHello() {
 	console.log("Hello");
 }
