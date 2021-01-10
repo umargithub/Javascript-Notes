@@ -71,7 +71,7 @@ With const, just as with let, the variable is hoisted to the top of the block.
 **For Example**
 
 ```javascript
-console.log(hoist); // Output: ncaught ReferenceError: Cannot access 'hoist' before initialization
+console.log(hoist); // Output: Uncaught ReferenceError: Cannot access 'hoist' before initialization
 const hoist = 'The variable has been hoisted.';
 ```
 
@@ -79,7 +79,7 @@ Instances of var and let can be initialised without a value, while const will th
 
 ```javascript
 const myName; // Output: Uncaught SyntaxError: Missing initializer in const declaration
-myName = 'Sunil';
+myName = 'Umar';
 ```
 
 ## Hoisting functions
