@@ -26,3 +26,21 @@ callTwice(laugh) // Laugh is callback function
 // Ha ha ha 
 // Ha ha ha
 ```
+
+> We generally use anonyumous function rather than using an existing function as callback. Anonymous functions are unnamed function and just one time use function.
+
+**Example 2**
+
+```javascript
+function sayHello() {
+	console.log("Hello");
+}
+
+setTimeout(sayHello, 5000); // says "Hello" after 5 seconds
+
+// Calling it anonymous
+
+setTimeout(function() {
+	console.log("Hello");
+}, 5000) // // says "Hello" after 5 seconds
+```
