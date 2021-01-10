@@ -82,7 +82,7 @@ The answer was in its environment. The browser provides a way to do it by provid
 
 **There are some cases that code runs (or must run) after something else happens and also not sequentially. This is called asynchronous programming.**
 
-For Example -
+**Let us take an example**
 
 ```javascript
 function first(){
@@ -102,7 +102,9 @@ second();
 
 As you would expect, the function first is executed first, and the function second is executed second — logging the following to the console:
 
-> But what if function first contains some sort of code that can’t be executed immediately? For example, an API request where we have to send the request then wait for a response? To simulate this action, were going to use setTimeout which is a JavaScript function that calls a function after a set amount of time. We’ll delay our function for 500 milliseconds to simulate an API request. Our new code will look like this:
+> But what if function first contains some sort of code that can’t be executed immediately? For example, an API request where we have to send the request then wait for a response? 
+
+To simulate this action, were going to use setTimeout which is a JavaScript function that calls a function after a set amount of time. We’ll delay our function for 500 milliseconds to simulate an API request. Our new code will look like this:
 
 **Example 4**
 
@@ -125,9 +127,10 @@ second();
 ```
 
 Even though we invoked the first() function first, we logged out the result of that function after the second() function.
+
 It’s not that JavaScript didn’t execute our functions in the order we wanted it to, it’s instead that JavaScript didn’t wait for a response from first() before moving on to execute second()
 
-We can’t just call one function after another and hope they execute in the right order. Callbacks are a way to make sure certain code doesn’t execute until other code has already finished execution.
+**We can’t just call one function after another and hope they execute in the right order. Callbacks are a way to make sure certain code doesn’t execute until other code has already finished execution.**
 
 So to make sure, first function runs before the second one, we can pass second function as callback
 
