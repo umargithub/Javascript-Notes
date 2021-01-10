@@ -72,3 +72,38 @@ pickOne(f1, f2)
 // Result 
 // Pick a Random Function
 ```
+
+### Returning Functions
+
+**Example 1**
+
+```javascript
+
+// multiplyBy is a Factory Function
+
+function multiplyBy(num) {
+  return function(x) {
+    return x * num;
+  } 
+}
+
+const triple = multiplyBy(3);
+const double = multiplyBy(2);
+
+triple(7) // 21
+double(4) // 8
+```
+
+**Example 2**
+
+```javascript
+function makeBetweenFunction(min, max) {
+  return function (val) {
+    return val >= min && val <= max;
+  }
+}
+
+const inAgeRange = makeBetweenFunction(18, 100);
+
+inAgeRange(17)
+```
