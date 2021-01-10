@@ -106,6 +106,10 @@ function makeBetweenFunction(min, max) {
 }
 
 const inAgeRange = makeBetweenFunction(18, 100);
+const isInNinties = makeBetweenFunction(1990, 1999);
+const isNiceWeather = makeBetweenFunction(12, 24)
 
 inAgeRange(17) // false
+isInNinties(1989) // false
+isNiceWeather(19) //true
 ```
