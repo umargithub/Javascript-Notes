@@ -61,3 +61,12 @@ setTimeout(function() {
 	console.log("Hello");
 }, 5000) // says "Hello" after 5 seconds
 ```
+
+**Example 3**
+
+```javascript
+const btn = document.querySelector('button');
+btn.addEventListener('click', function() {
+	console.log("Button is clicked");
+})
+```
