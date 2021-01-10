@@ -42,5 +42,5 @@ setTimeout(sayHello, 5000); // says "Hello" after 5 seconds
 
 setTimeout(function() {
 	console.log("Hello");
-}, 5000) // // says "Hello" after 5 seconds
+}, 5000) // says "Hello" after 5 seconds
 ```
