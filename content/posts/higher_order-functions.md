@@ -11,7 +11,7 @@ Functions that operate on/with other functions. They can:
 - Accept other functions as arguments
 - Returns a function
 
-### Functions as Arguments
+### Functions as Arguments <span class="logo__cursor"></span>
 
 **Example 1**
 
@@ -73,9 +73,9 @@ pickOne(f1, f2)
 // Pick a Random Function
 ```
 
-### Returning Functions
+### Returning Functions <span class="logo__cursor"></span>
 
-**Example 1 <span class="logo__cursor"></span>**
+**Example 1**
 
 ```javascript
 
