@@ -12,7 +12,7 @@ paginate = 5
   defaultTheme = "light"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 0
+  showMenuItems = 1
 
   # Show reading time in minutes for posts
   showReadingTime = false
@@ -30,8 +30,8 @@ paginate = 5
     title = "Mohammad Umar"
     subtitle = "Javascript Notes"
     keywords = ""
-    copyright = ""
-    menuMore = "Show more"
+    copyright = "@ Mohammad Umar"
+    menuMore = "Menu"
     writtenBy = "Written by"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
@@ -45,7 +45,7 @@ paginate = 5
 
     [languages.en.params.logo]
       logoText = "Mohammad Umar"
-      logoHomeLink = "/"
+      logoHomeLink = "/index.md"
     # or
     #
     # path = "/img/your-example-logo.svg"
