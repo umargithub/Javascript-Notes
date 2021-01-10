@@ -10,8 +10,6 @@ Hoisting is a JavaScript mechanism where variables and function declarations are
 
 Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
 
-**During compile phase, just microseconds before your code is executed, it is scanned for function and variable declarations. All these functions and variable declarations are added to the memory inside a JavaScript data structure called Lexical Environment. So that they can be used even before they are actually declared in the source code.**
-
 **For Example**
 
 ```javascript
@@ -40,6 +38,8 @@ animal = "Rabbit"; // Here interpreter wil assign the vaue
 ```
 
 Note - The JavaScript engine is not physically moving your code, your code stays where you typed it.
+
+***During compile phase, just microseconds before your code is executed, it is scanned for function and variable declarations. All these functions and variable declarations are added to the memory inside a JavaScript data structure called Lexical Environment. So that they can be used even before they are actually declared in the source code.***
 
 ### But why undefined?
 
