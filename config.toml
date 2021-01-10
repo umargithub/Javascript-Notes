@@ -45,7 +45,7 @@ paginate = 5
 
     [languages.en.params.logo]
       logoText = "Mohammad Umar"
-      logoHomeLink = "/index.md"
+      logoHomeLink = "index.md"
     # or
     #
     # path = "/img/your-example-logo.svg"
