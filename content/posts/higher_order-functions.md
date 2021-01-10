@@ -4,7 +4,7 @@ date: 2021-01-10T14:38:05+05:30
 draft: false
 ---
 
-## What is Higher Order Functions
+## What are Higher Order Functions
 
 Functions that operate on/with other functions. They can:
 
