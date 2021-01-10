@@ -27,7 +27,7 @@ callTwice(laugh) // Laugh is callback function
 // Ha ha ha
 ```
 
-> We generally use anonymous function rather than using an existing function as callback. Anonymous functions are unnamed function and just one time use function.
+> We generally use anonymous function rather than using an existing function as callback. Anonymous functions are just unnamed function and one time use function.
 
 **Example 2**
 
