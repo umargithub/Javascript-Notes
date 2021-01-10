@@ -69,5 +69,6 @@ function f2() {
 
 pickOne(f1, f2) 
 
-// Result Pick a Random Function
+// Result 
+//Pick a Random Function
 ```
