@@ -10,7 +10,7 @@ Hoisting is a JavaScript mechanism where variables and function declarations are
 
 Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
 
-**Example 1 - Variables declared with var are moved to top**
+**For Example**
 
 ```javascript
 console.log(animal);
@@ -36,9 +36,16 @@ animal = "Rabbit"; // Here interpreter wil assign the vaue
 
 // Returns Uncaught ReferenceError: animal is not defined
 ```
-## Hositing with Let and Const
 
-They’re also hoisted — in fact, var, let, const, function and class declarations are hoisted — what we have to remember though is that the concept of hosting is not a literal process (ie, the declarations themselves do not move to the top of the file — it is simply a process of the JavaScript compiler reading them first in order to create space in memory for them).
+###But why undefined?
+
+When JavaScript engine finds a var variable declaration during the compile phase, it will add that variable to the lexical environment and initialize it with undefined and later during the execution when it reaches the line where the actual assignment is done in the code, it will assign that value to the variable.
+
+### So are let and const variables not hoisted?
+
+All declarations (function, var, let, const and class) are hoisted in JavaScript, while the var declarations are initialized with undefined, but let and const declarations remain uninitialized.
+
+They will only get initialized when their lexical binding (assignment) is evaluated during runtime by the JavaScript engine. This means you can’t access the variable before the engine evaluates its value at the place it was declared in the source code. This is what we call “Temporal Dead Zone”, A time span between variable creation and its initialization where they can’t be accessed.
 
 ### let
 
@@ -53,7 +60,7 @@ let hoist = 'The variable has been hoisted.';
 
 > This ensures that we always declare our variables first.
 
-However, we still have to be careful here. An implementation like the following will result in an ouput of undefined instead of a Reference error.
+If the JavaScript engine still can’t find the value of let or const variables at the line where they were declared, it will assign them the value of undefined or return an error (in case of const).
 
 **For Example**
 
@@ -66,7 +73,7 @@ hoist = 'Hoisted'
 
 ### const
 
-With const, just as with let, the variable is hoisted to the top of the block.
+With const, just as with let, the variable is hoisted to the top of the block but not initialized.
 
 **For Example**
 
@@ -105,7 +112,7 @@ function hoisted() {
 
 ### Function expressions
 
-Function expressions, however are not hoisted.
+Only function declarations are hoisted in JavaScript, function expressions are not hoisted. For example: this code won’t work.
 
 **For Example**
 
