@@ -89,9 +89,11 @@ function multiplyBy(num) {
 
 const triple = multiplyBy(3);
 const double = multiplyBy(2);
+const halve = multiplyBy(0.5);
 
 triple(7) // 21
 double(4) // 8
+halve(6) //3
 ```
 
 **Example 2**
