@@ -80,7 +80,7 @@ But JavaScript was born inside the browser, its main job, in the beginning, was 
 
 The answer was in its environment. The browser provides a way to do it by providing a set of APIs that can handle this kind of functionality.
 
-**There are some cases that code runs (or must run) after something else happens and also not sequentially. This is called asynchronous programming.**
+**Reason 1: There are some cases that code runs (or must run) after something else happens and also not sequentially. This is called asynchronous programming.**
 
 **Let us take an example**
 
@@ -154,7 +154,7 @@ first(function (){
 // 2
 ```
 
-**JavaScript is an event-driven programming language. We also use callback functions for event declarations. For example, let’s say we want users to click on a button:**
+**Reason 2: JavaScript is an event-driven programming language. We also use callback functions for event declarations. For example, let’s say we want users to click on a button:**
 
 > You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered:
 
