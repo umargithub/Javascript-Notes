@@ -11,7 +11,7 @@ Functions that operate on/with other functions. They can:
 - Accept other functions as arguments
 - Returns a function
 
-### Functions as Arguments <span class="logo__cursor"></span>
+### Functions as Arguments <span class="heading__cursor"></span>
 
 **Example 1**
 
