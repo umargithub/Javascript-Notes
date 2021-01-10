@@ -9,12 +9,12 @@
       <div class="homepage-content">
         <h1>I am Mohammad Umar</h1>
         <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
-        {{.Content}}
+        <!-- {{.Content}} -->
       </div>
       <div>
-        {{ range first 10 .Site.RegularPages }}
+        <!-- {{ range first 10 .Site.RegularPages }}
             {{ .Render "summary"}}
-        {{ end }}
+        {{ end }} -->
       </div>
     </main>
 {{ end }}
