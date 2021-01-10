@@ -8,5 +8,5 @@ draft: false
 
 Functions that operate on/with other functions. They can:
 
-# Accept other functions as arguments
-# Returns a function
+- Accept other functions as arguments
+- Returns a function
