@@ -13,7 +13,7 @@ Functions that operate on/with other functions. They can:
 
 ### Functions as Arguments
 
-#### Example 1
+_Example 1_
 
 ```javascript
 function callTwice(func) {
@@ -70,5 +70,5 @@ function f2() {
 pickOne(f1, f2) 
 
 // Result 
-//Pick a Random Function
+// Pick a Random Function
 ```
