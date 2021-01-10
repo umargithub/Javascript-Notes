@@ -13,7 +13,7 @@ Functions that operate on/with other functions. They can:
 
 ### Functions as Arguments
 
-*Example 1*
+**Example 1**
 
 ```javascript
 function callTwice(func) {
@@ -31,7 +31,7 @@ callTwice(laugh) // passing a function as an argument
 // Ha ha ha 
 // Ha ha ha
 ```
-#### Example 2
+**Example 2**
 
 ```javascript
 function callNTimes(func, num) {
@@ -52,7 +52,7 @@ callNTimes(laugh, 3) // passing a function as an argument
 // Ha ha ha
 ```
 
-#### Example 3
+**Example 3**
 
 ```javascript
 function pickOne(f1, f2) {
