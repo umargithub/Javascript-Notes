@@ -75,7 +75,7 @@ pickOne(f1, f2)
 
 ### Returning Functions
 
-**Example 1**
+**Example 1 <span class="logo__cursor"></span>**
 
 ```javascript
 
@@ -105,5 +105,5 @@ function makeBetweenFunction(min, max) {
 
 const inAgeRange = makeBetweenFunction(18, 100);
 
-inAgeRange(17)
+inAgeRange(17) // false
 ```
