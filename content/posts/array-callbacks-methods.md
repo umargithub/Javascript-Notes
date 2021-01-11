@@ -1,6 +1,6 @@
 ---
 title: 'Array Callback Methods'
-date: 2021-01-12T14:38:05+05:30
+date: 2021-01-12T02:33:05+05:30
 draft: false
 ---
 
@@ -233,4 +233,4 @@ bookTitle;
 // Returns ['Good Omens', 'Bone: The Complete Edition', 'America Gods', 'A Gentleman in Moscow']
 ```
 
-> Note - Map doesn't mutate the array.
+> Map doesn't mutate the array.
