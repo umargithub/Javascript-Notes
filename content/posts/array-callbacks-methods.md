@@ -4,7 +4,7 @@ date: 2021-01-12T02:33:05+05:30
 draft: false
 ---
 
-> Arrays come with many built-in methods that accepts callback functions.
+Arrays come with many built-in methods that accepts callback functions.
 
 * [forEach](#foreach)
 * [map](#map)
