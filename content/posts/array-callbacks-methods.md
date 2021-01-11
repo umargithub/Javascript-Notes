@@ -58,7 +58,7 @@ function printTriple(n) {
 nums.forEach(printTriple)
 ```
 
-**Example - 4**
+**Example 4**
 
 ```javascript
 const books = [
