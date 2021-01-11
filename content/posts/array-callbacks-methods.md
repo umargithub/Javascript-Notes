@@ -233,4 +233,4 @@ bookTitle;
 // Returns ['Good Omens', 'Bone: The Complete Edition', 'America Gods', 'A Gentleman in Moscow']
 ```
 
-> Map doesn't mutate the array.
+> Note - Map doesn't mutate the array.
