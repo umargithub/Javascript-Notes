@@ -1,6 +1,6 @@
 ---
 title: 'Arrow Functions'
-date: 2021-01-12T02:33:05+05:30
+date: 2021-01-13T00:50:05+05:30
 draft: false
 ---
 
