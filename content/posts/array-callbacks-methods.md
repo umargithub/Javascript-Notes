@@ -136,6 +136,8 @@ nums.forEach(function(num, idx){
 
 Map is used to create a new array from an existing array.
 
+> Map doesn't mutate the array.
+
 **Example 1**
 
 ```javascript
@@ -233,4 +235,19 @@ bookTitle;
 // Returns ['Good Omens', 'Bone: The Complete Edition', 'America Gods', 'A Gentleman in Moscow']
 ```
 
-> Map doesn't mutate the array.
+**Example 6**
+
+```javascript
+const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const parityList = nums.map(num => num % 2 === 0 ? 'Even' : 'Odd')
+
+parityList; // [Odd, Even, Odd, Even, Odd, Even, Odd, Even]
+
+// Other way
+
+const parityList = nums.map(function(num){
+	if(n %  2 === 0) return 'Even';
+	return 'Odd';
+})
+```
