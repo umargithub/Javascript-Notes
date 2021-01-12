@@ -252,7 +252,7 @@ const parityList = nums.map(function(num){
 })
 ```
 
-## Find
+## find
 
 Returns the value of the first element in the array that satisfies the provided testing functions.
 
