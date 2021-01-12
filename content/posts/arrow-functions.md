@@ -67,7 +67,7 @@ greet(); // Hello
 
 ## Implicit Return 
 
-If there is single expression to return, we can rewrite the arrow function using paranthesis insted of curly braces, andif we do that we need to remove return keyword. We can even make simple by removing the parens and making it one liner.
+If there is a single expression to return, we can rewrite the arrow function using paranthesis insted of curly braces, andif we do that we need to remove return keyword. We can even make simple by removing the parens and making it one liner.
 
 **Example 6**
 
