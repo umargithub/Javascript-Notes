@@ -406,7 +406,7 @@ const results = books.filter(book => {
 })
 results
 
-// oR
+// or
 
 let query = 'The';
 const results = books.filter(book => {
