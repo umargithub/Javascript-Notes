@@ -8,8 +8,8 @@ Arrays come with many built-in methods that accepts callback functions.
 
 * [forEach](#foreach)
 * [map](#map)
-* filter
-* find
+* [filter](#filter)
+* [find](#find)
 * reduce
 * some
 * every 
@@ -250,4 +250,168 @@ const parityList = nums.map(function(num){
 	if(n %  2 === 0) return 'Even';
 	return 'Odd';
 })
+```
+
+## Find
+
+Returns the value of the first element in the array that satisfies the provided testing functions.
+
+**Example 1**
+
+```javascript
+const movies = [
+  "The Fantastic Mr. Fox",
+  "Mr. and Mrs. Smith",
+  "Mrs. Doubtfire",
+  "Mr. Deeds"
+]
+
+let movie = movies.find(function(movie){
+  return movie.includes("Mrs.");
+})
+movie // Mr. and Mrs. Smith
+
+let movie2 = movies.find(movie => movie.indexOf('Mrs') === 0 )
+movie2 // 'Mrs. Doubtfire'
+```
+
+**Example 2**
+
+```javascript
+const books = [
+  {
+    title: 'Good Omens',
+    authors: ['Terry Pratchett', 'Neil Gaiman'],
+    rating: 4.25
+  },
+  {
+    title: 'Bone: The Complete Edition',
+    authors: ['Jeff Smith'],
+    rating: 4.42
+  },
+  {
+    title: 'America Gods',
+    authors: ['Neil Goiman'],
+    rating: 4.41
+  },
+  {
+    title: 'A Gentleman in Moscow',
+    authors: ['Amor Towels'],
+    rating: 4.36
+  }
+]
+
+const book = books.find(book => book.rating >= 4.3 )
+book;
+
+const neilbook = books.find(book => book.authors.includes('Neil Gaiman'))
+
+neilbook;
+```
+
+## filter
+
+Creates a new array with all the elements that pass the test implemented by the provided function.
+
+> Filter doesn't mutate the array.
+
+**Example 1**
+
+```javascript
+const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+const odds = nums.filter(num => num % 2 === 1)
+odds; // [ 9, 7, 5, 3, 1 ]
+```
+
+**Example 2**
+
+```javascript
+const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+const smallNums = nums.filter(num => num < 5)
+smallNums // [ 4, 3, 2, 1 ]
+```
+
+**Example 3**
+
+```javascript
+const books = [
+  {
+    title: 'Good Omens',
+    authors: ['Terry Pratchett', 'Neil Gaiman'],
+    rating: 4.25,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'Changing My Mind',
+    authors: ['Zadie Smith'],
+    rating: 3.83,
+    genres: ['nonfiction', 'essays']
+  },
+  {
+    title: 'Bone: The Complete Edition',
+    authors: ['Jeff Smith'],
+    rating: 4.42,
+    genres: ['fiction', 'graphic novel', 'fantasy']
+  },
+  {
+    title: 'America Gods',
+    authors: ['Neil Goiman'],
+    rating: 4.11,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'A Gentleman in Moscow',
+    authors: ['Amor Towels'],
+    rating: 4.36,
+    genres: ['fiction', 'historical fiction']
+  },
+  {
+    title: 'The Name of the Wind',
+    authors: ['Patrick Rothfuss'],
+    rating: 4.54,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'The OverStory',
+    authors: ['Richard Powers'],
+    rating: 4.19,
+    genres: ['fiction', 'short stories']
+  },
+  {
+    title: 'The Way of Kings',
+    authors: ['Brandon Sanderson'],
+    rating: 4.65,
+    genres: ['fantasy', 'epic']
+  },
+  {
+    title: 'Lord of the files',
+    authors: ['Wiliam Golding'],
+    rating: 3.67,
+    genres: ['fiction']
+  }
+]
+
+const goodBooks = books.filter(book => book.rating >= 4.3 )
+goodBooks;
+
+const fantasyBooks = books.filter(book => book.genres.includes('fantasy'))
+fantasyBooks
+
+const shortStories = books.filter(book => book.genres.includes('short stories') || book.genres.includes('essays'))
+shortStories
+
+let query = 'The';
+const results = books.filter(book => {
+  return book.title.toLowerCase().includes(query.toLowerCase())
+})
+results
+
+// or
+
+let query = 'The';
+const results = books.filter(book => {
+  let title = book.title.toLowerCase();
+  return title.includes(query.toLowerCase())
+})
+results
 ```
