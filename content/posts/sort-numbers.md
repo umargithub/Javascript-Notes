@@ -12,7 +12,7 @@ prices.sort();
 // [ 12, 3000, 35.99, 400.5, 9500, 99.99 ]
 ```
 
-The default sort in Javascript does not work for numbers. All the numbers are converted to strings and and sorted as strings and that leads to incorrect order.
+The default sort in Javascript does not work for numbers. All the numbers are converted to strings and sorted as strings and that leads to incorrect order.
 
 ## Sorting for Numbers
 
