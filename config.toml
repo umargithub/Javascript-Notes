@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-theme = "book"
+theme = "researcher"
 paginate = 5
 
 [params]
