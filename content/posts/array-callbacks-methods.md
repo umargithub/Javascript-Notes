@@ -11,8 +11,8 @@ Arrays come with many built-in methods that accepts callback functions.
 * [filter](#filter)
 * [find](#find)
 * reduce
-* some
-* every 
+* [some](#some)
+* [every](#every)
 
 ## forEach
 
@@ -414,4 +414,74 @@ const results = books.filter(book => {
   return title.includes(query.toLowerCase())
 })
 results
+```
+
+## every
+
+Tests whether all elements in the array pass the provided function. It returns a boolean value.
+
+**Example**
+
+```javascript
+const words = ['dog', 'dig', 'log', 'bag', 'wag'];
+
+words.every(word => {
+  return word.length === 3;
+}) 
+
+// returns true
+
+const allEndInG = words.every(word => word[0] === 'd'); //false
+
+words.every(word => {
+  return word[word.length-1] === 'g';
+})
+
+// returns true
+
+const check = books.every(book => {
+  return book.rating > 3.5
+})
+
+//returns true
+```
+
+## some
+
+Similar to every, but returns true if ANY of the array elements pass the test function.
+
+**Example**
+
+```javascript
+const words = ['dog', 'jello', 'log', 'cupcake', 'bag', 'wag'];
+
+// Are there any words longer than 4 characters?
+
+const check = words.some(word => {
+  return word.length > 4;
+})
+
+check // true
+
+// Do any words starts with 'Z'?
+
+const check = words.some(word => {
+  return word[0] === 'z'
+})
+
+check // false
+
+// Do any words contain cake
+
+const check = words.some(word => {
+  return word.includes('cake')
+})
+
+check // true
+
+const check = books.some(book => {
+  return book.authors.length === 2
+})
+
+//returns true
 ```
