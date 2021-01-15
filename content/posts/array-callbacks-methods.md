@@ -564,6 +564,8 @@ total; // 130
 **Example 5**
 
 ```javascript
+const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
+
 const tally = votes.reduce((tally, vote) => {
   if(tally[vote]) {
     tally[vote]++;
@@ -583,12 +585,93 @@ const tally = votes.reduce((tally, vote) => {
 
 tally; // { y: 6, n: 5 }
 
-const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
-
 const tally = votes.reduce((tally, vote) => {
   tally[vote] = (tally[vote] || 0) + 1;
   return tally;
 }, {})
 
 tally; // { y: 6, n: 5 }
+```
+
+**Example**
+
+```javascript
+const books = [
+  {
+    title: 'Good Omens',
+    authors: ['Terry Pratchett', 'Neil Gaiman'],
+    rating: 4.25,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'Changing My Mind',
+    authors: ['Zadie Smith'],
+    rating: 3.83,
+    genres: ['nonfiction', 'essays']
+  },
+  {
+    title: 'Bone: The Complete Edition',
+    authors: ['Jeff Smith'],
+    rating: 4.42,
+    genres: ['fiction', 'graphic novel', 'fantasy']
+  },
+  {
+    title: 'America Gods',
+    authors: ['Neil Goiman'],
+    rating: 4.11,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'A Gentleman in Moscow',
+    authors: ['Amor Towels'],
+    rating: 4.36,
+    genres: ['fiction', 'historical fiction']
+  },
+  {
+    title: 'The Name of the Wind',
+    authors: ['Patrick Rothfuss'],
+    rating: 4.54,
+    genres: ['fiction', 'fantasy']
+  },
+  {
+    title: 'The OverStory',
+    authors: ['Richard Powers'],
+    rating: 4.19,
+    genres: ['fiction', 'short stories']
+  },
+  {
+    title: 'A Truly Horrible Book',
+    authors: ['Xavier Time'],
+    rating: 2.18,
+    genres: ['fiction', 'garbage']
+  },
+  {
+    title: 'The Way of Kings',
+    authors: ['Brandon Sanderson'],
+    rating: 4.65,
+    genres: ['fantasy', 'epic']
+  },
+  {
+    title: 'Lord of the files',
+    authors: ['Wiliam Golding'],
+    rating: 3.67,
+    genres: ['fiction']
+  }
+]
+
+const ratingOrder = books.reduce((tally, book) => {
+  let key = Math.floor(book.rating);
+  if(tally[key]) tally[key].push(book)
+  else tally[key] = [book];
+  return tally;
+}, {})
+
+ratingOrder;
+
+const ratingOrder = books.reduce((tally, book) => {
+  let key = Math.floor(book.rating);
+  if(!tally[key]) tally[key] = [];
+  tally[key].push(book);
+  return tally
+}, {})
 ```
