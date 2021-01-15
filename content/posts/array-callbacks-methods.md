@@ -10,7 +10,7 @@ Arrays come with many built-in methods that accepts callback functions.
 * [map](#map)
 * [filter](#filter)
 * [find](#find)
-* reduce
+* [reduce](#reduce)
 * [some](#some)
 * [every](#every)
 
@@ -485,3 +485,31 @@ const check = books.some(book => {
 
 //returns true
 ```
+
+## reduce
+
+It takes an array of values and it reduces them down to a single value.
+
+**Example**
+
+```javascript
+const nums = [3, 5, 7., 9, 11];
+
+const total = nums.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+})
+
+total; // 35
+```
+
+----------------------------------------------------------
+| Callback    | accumulator | currentValue | returnValue |
+----------------------------------------------------------
+| first call  |       3     |       5      |       8     |
+----------------------------------------------------------
+| second call |       8     |       7      |      15     |
+----------------------------------------------------------
+| third call  |      15     |       9      |      24     |
+----------------------------------------------------------
+| fourth call |      24     |      11      |      35     |
+----------------------------------------------------------
