@@ -490,7 +490,7 @@ const check = books.some(book => {
 
 It takes an array of values and it reduces them down to a single value.
 
-**Example**
+**Example 1**
 
 ```javascript
 const nums = [3, 5, 7., 9, 11];
@@ -508,3 +508,68 @@ total; // 35
 | second call |       8     |       7      |      15     |
 | third call  |      15     |       9      |      24     |
 | fourth call |      24     |      11      |      35     |
+
+**Example 2**
+
+```javascript
+const nums = [3, 4, 5., 6, 7];
+
+const product = nums.reduce((total, currentValue) => {
+  return total * currentValue;
+})
+
+product; // 2520
+```
+
+**Example 3 - Finding maximum value in an array**
+
+```javascript
+const grades = [89, 96, 58, 77, 62, 93, 81, 99, 73];
+
+const topScore = grades.reduce((max, currentValue) => {
+  if(currentValue > max) return currentValue;
+  return max;
+})
+
+topScore; // 99
+
+// Implicit return
+
+const topScore = grades.reduce((max, currentValue) => Math.max(max, currentValue))
+
+topScore; // 99
+```
+
+***Inital Value***
+
+**Example 4**
+
+```javascript
+const nums = [4, 5, 6, 7, 8];
+
+const total = nums.reduce((accumulator, currentValue) => {
+  return accumulator +  currentValue;;
+}) 
+
+total; // 100 
+
+// Using Inital Value
+
+const total = nums.reduce((accumulator, currentValue) => {
+  return accumulator +  currentValue;;
+}, 100) 
+
+total; // 130
+```
+**Example 5**
+
+```javascript
+const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
+
+const tally = votes.reduce((tally, vote) => {
+  tally[vote] = (tally[vote] || 0) + 1;
+  return tally;
+}, {})
+
+tally; // { y: 6, n: 5 }
+```
