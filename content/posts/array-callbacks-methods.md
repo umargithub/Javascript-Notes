@@ -583,8 +583,6 @@ const tally = votes.reduce((tally, vote) => {
 
 tally; // { y: 6, n: 5 }
 
-// or
-
 const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
 
 const tally = votes.reduce((tally, vote) => {
