@@ -503,6 +503,7 @@ total; // 35
 ```
 
 | Callback    | accumulator | currentValue | returnValue |
+| :---------- | :---------: | :----------: | ----------: |
 | first call  |       3     |       5      |       8     |
 | second call |       8     |       7      |      15     |
 | third call  |      15     |       9      |      24     |
