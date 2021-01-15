@@ -577,7 +577,7 @@ tally; // { y: 6, n: 5 }
 
 const tally = votes.reduce((tally, vote) => {
   if(tally[vote] == undefined) tally[vote] = 1;
-  tally[vote] += 1;
+  else tally[vote] += 1;
   return tally
 }, {})
 
