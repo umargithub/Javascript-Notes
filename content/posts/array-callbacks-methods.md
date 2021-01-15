@@ -564,6 +564,27 @@ total; // 130
 **Example 5**
 
 ```javascript
+const tally = votes.reduce((tally, vote) => {
+  if(tally[vote]) {
+    tally[vote]++;
+  } else {
+    tally[vote] = 1;
+  }
+  return tally;
+}, {})
+
+tally; // { y: 6, n: 5 }
+
+const tally = votes.reduce((tally, vote) => {
+  if(tally[vote] == undefined) tally[vote] = 1;
+  tally[vote] += 1;
+  return tally
+}, {})
+
+tally; // { y: 6, n: 5 }
+
+// or
+
 const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
 
 const tally = votes.reduce((tally, vote) => {
