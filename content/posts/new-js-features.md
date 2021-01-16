@@ -191,3 +191,86 @@ random; //  'h', 'e', 'l', 'l', 'o', { a: 1 } ]
 
 // Object can be spread in an object.
 ```
+## Rest
+
+It's look like spread, but it's not. It is used when we want to make function that accept an unlimited number of arguments or a variable number of arguments.
+
+### The Argument Object (old)
+
+* Available inside every function.
+* It's an array like object
+  * Has a length property.
+  * Does not have array method like push/pop
+* Contains all arguments passed to the function
+* Not available inside of arrow functions
+
+**Example 1**
+
+```javascript
+function sum() {
+  let total = 0;
+  for(let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+
+sum(1, 2, 3, 4)
+
+// or 
+
+function sum() {
+  const argsArray = [...arguments];
+  return argsArray.reduce((total, currentValue) => {
+    return total + currentValue;
+  })
+}
+
+sum(1, 2, 3, 4)
+```
+
+### rest params (new)
+
+Collects all remaining arguments into an actual array.
+
+**Example 1**
+
+```javascript
+function sum(...nums) {
+  let total = 0;
+  for(let num of nums) total += num
+  return total
+}
+
+sum(1, 2, 3, 4, 5); // 15
+
+// or
+
+function sum(...nums) {
+  return nums.reduce((total, currentValue) => total + currentValue)
+}
+
+sum(1, 2, 3, 4, 5)
+```
+
+**Example 2**
+
+```javascript
+function fullName(first, last, ...titles) {
+  console.log('first', first)
+  console.log('last', last)
+  console.log('titles', titles)
+}
+
+fullName('tom', 'jones', 'III', 'order of phoenix')
+
+// Collect remaing arguments which are not written. However argument object contained every argument including first and last. Rest is collecting the unclaimed arguments
+```
+
+**We can use rest in arrow function.**
+
+```javascript
+const sum = (...nums) => nums.reduce((total, currentValue) => total + currentValue)
+
+sum(1, 2, 3, 4, 5, 10) // 25
+```
