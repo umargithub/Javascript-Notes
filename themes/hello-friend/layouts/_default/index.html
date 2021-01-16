@@ -65,7 +65,7 @@
           {{ . | markdownify }}
         {{ else }}
           {{ if .Truncated }}
-            
+            {{< myshortcode >}}{{ .Summary }}{{< /myshortcode >}}
           {{ end }}
         {{ end }}
       </div>
