@@ -1,5 +1,5 @@
 ---
-title: 'Destructiring'
+title: 'Destructuring'
 date: 2021-01-17T05:26:05+05:30
 draft: false
 ---
