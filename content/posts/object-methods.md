@@ -25,7 +25,7 @@ const reviews = [4.5, 5.0, 3.44, 2.8, 3.5, 4.0, 3.5];
 const stats = getStats(reviews);
 stats;
 
-// Withshorthand properties
+// With shorthand properties
 
 const getStats = (arr) => {
   const max = Math.max(...arr);
