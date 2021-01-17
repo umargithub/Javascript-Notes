@@ -1,6 +1,6 @@
 ---
 title: 'Object Methods and the 'This' Keyword'
-date: 2021-01-18T01:30:05+05:30
+date: 2021-01-17T01:30:05+05:30
 draft: false
 ---
 
