@@ -171,5 +171,5 @@ const math = {
   }
 }
 
-math.add(2, 4); // 6
+math.add(2, 4); // 
 ```
